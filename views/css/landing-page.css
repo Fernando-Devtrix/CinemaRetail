@@ -1,0 +1,207 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body, html{
+  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.bg1{
+
+    position: static;
+    /* The image used */
+    background-image: url("../img/landingPage/background.png");
+    stroke: rgb(112, 112, 112, 1);
+
+
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg2 {
+    /* The image used */
+    background-image: url("../img/landingPage/background1.png");
+    stroke: rgb(112, 112, 112, 1);
+
+
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { 
+
+    .text1{
+        position: absolute;
+        margin-top: 50px;
+        margin-left: -45px;
+        font-weight: bold;
+     }
+
+      .btnTryNow{
+        position: ;
+        margin-top: 300px;
+        margin-left: 0px;
+       
+     }
+
+    .text2{
+        position: absolute;
+        margin-top: 50px;
+        margin-right: 33px;
+        font-weight: bold;
+     }
+
+    .btnTryNowDown{
+        position: ;
+        margin-top: 330px;
+        margin-left: 0px;
+       
+     }
+
+ 
+
+}
+
+/*  Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+
+    .text1{
+        position: absolute;
+        margin-top: 100px;
+        font-weight: bold;
+     }
+
+      .btnTryNow{
+        position: ;
+        margin-top: 300px;
+        margin-left: 0px;
+     }
+
+     .text2{
+        position: absolute;
+        margin-top: 100px;
+        margin-right: 33px;
+        font-weight: bold;
+     }
+
+    .btnTryNowDown{
+        position: ;
+        margin-top: 330px;
+        margin-left: 25px;
+       
+     }
+  
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+
+    .text1{
+        position: absolute;
+        margin-top: 140px;
+        font-weight: bold;
+     }
+
+      .btnTryNow{
+        position: ;
+        margin-top: 300px;
+        margin-left: 0px;
+       
+     }
+
+    .text2{
+        position: absolute;
+        margin-top: 100px;
+        margin-right: 33px;
+        font-weight: bold;
+     }
+
+    .btnTryNowDown{
+        position: ;
+        margin-top: 300px;
+        margin-left: 25px;
+       
+     }
+ 
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+
+    .text1{
+        position: absolute;
+        margin-top: 240px;
+        margin-right: -45px;
+        font-weight: bold;
+     }
+
+      .btnTryNow{
+        position: ;
+        margin-top: 400px;
+        margin-left: 0px;
+       
+     }
+
+     .text2{
+        position: absolute;
+        margin-top: 100px;
+        margin-right: 140px;
+        font-weight: bold;
+     }
+
+    .btnTryNowDown{
+        position: ;
+        margin-top: 300px;
+        margin-left: 0px;
+       
+     }
+ 
+}
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+ 
+     .text1{
+        position: absolute;
+        margin-top: 250px;
+        font-weight: bold;
+        font-size: 60px;
+     }
+
+      .btnTryNow{
+        position: ;
+        margin-top: 400px;
+        margin-left: 0px;
+       
+     }
+
+    .text2{
+        position: absolute;
+        margin-top: 240px;
+        margin-right: 140px;
+        font-weight: bold;
+     }
+
+    .btnTryNowDown{
+        position: ;
+        margin-top: 400px;
+        margin-left: 0px;
+       
+     }
+
+}
