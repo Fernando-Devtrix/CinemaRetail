@@ -17,7 +17,7 @@
 					<div class="'.$movie_style["Col"].'">
 					    <figure class="figure">
 							<figcaption class="figure-caption">'.$value["title"].'</figcaption>
-					    	<img src="'.$value["image_route"].'" alt="img" class="'.$movie_style["BootstrapClass"].' image'.$movie_style["Num"].' movies">
+					    	<img src="'.$mainUrl.''.$value["image_route"].'" alt="img" class="'.$movie_style["BootstrapClass"].' image'.$movie_style["Num"].' movies">
 						</figure>		
 					</div>	
 				</div>';		

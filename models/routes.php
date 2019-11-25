@@ -4,7 +4,7 @@
 
 		public function ctrlRoute() {
 
-			return "http://localhost/CinemaRetail/";
+			return "http://localhost:50/CinemaRetail/";
 
 		}
 

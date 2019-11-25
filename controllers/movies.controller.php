@@ -23,7 +23,16 @@
 			$answer = MoviesModel::mdlShowCategories($table);
 
 			return $answer;
-			
+
+		}
+
+		static public function ctrlListMoviesByGenre($item, $value) {
+
+			$table = "movies";
+
+			$answer = MoviesModel::mdlListMoviesByGenre($item, $value, $table);
+
+			return $answer;
 		}
 
 	}

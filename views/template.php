@@ -13,11 +13,13 @@
 
 	<?php 
 
+		$mainUrl = Route::ctrlRoute();
+
 		$icon = TemplateController::ctrlTemplateIcon();
 
-		echo '<link rel="icon" href="'.$icon["tab_icon"].'">';
+		echo '<link rel="icon" href="'.$mainUrl.$icon["tab_icon"].'">';
 
-		$mainUrl = Route::ctrlRoute();
+
 	?>
 
 	<!-- Plugins CSS -->
@@ -44,6 +46,8 @@
 
     <script src="<?php echo $mainUrl; ?>src/plugins/assets/js/script.min.js"></script>
 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 	<!-- <script rel="stylesheet" href="views/js/plugins/bootstrap.min.js"></script> -->
 
 </head>
@@ -61,7 +65,7 @@
 					DINAMIC CONTENT            
 	=============================================*/
 
-	$routes = array();
+	// $routes = array();
 
 	$route = null;
 
