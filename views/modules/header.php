@@ -34,8 +34,25 @@
                 <div class="dropdown dropStyle">
                     <a href="#" class="dropdown-toggle text-muted" data-toggle="dropdown">Agregadas este mes</a>
                     <div class="dropdown-menu">
-                        <a href="#" class="dropdown-item">Another action</a>
+                        <?php 
+
+                            $order = "date";
+                            $limit = 7;
+
+                            $lastMovies = MoviesController::ctrlListMovies($order, $limit);
+
+                            foreach ($lastMovies as $value) {
+
+                                echo '
+                                    <a href="#" class="dropdown-item">'.$value["title"].'</a>
+                                ';
+                                
+                            }
+
+                        ?>
+
                     </div>
+
                 </div>
                
                 <li class="nav-item" role="presentation"><a class="nav-link" href="#">Mi lista de películas</a></li>

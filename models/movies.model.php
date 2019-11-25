@@ -4,9 +4,9 @@
 
 	class MoviesModel {
 
-		static public function mdlListMovies($table, $order) {
+		static public function mdlListMovies($table, $order, $limit) {
 
-			$stmt = Conection::conect()->prepare("SELECT * FROM $table ORDER BY $order DESC LIMIT 3");
+			$stmt = Conection::conect()->prepare("SELECT * FROM $table ORDER BY $order DESC LIMIT $limit");
 
 			$stmt -> execute();
 
@@ -41,4 +41,20 @@
 			$stmt -> close();
 
 		}
+
+		static public function mdlGetMoviesBySpecificGenre($table, $genre, $order, $numberOfResults) {
+
+			$stmt = Conection::conect()->prepare("SELECT * FROM $table WHERE genre like '%$genre%' ORDER BY $order LIMIT $numberOfResults");
+
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+			
+			$stmt -> close();
+
+			$stmt = null;
+
+
+		}
+
 	}
