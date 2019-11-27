@@ -46,4 +46,26 @@
 
 		}
 
+		static public function ctrlShowMovieInfo($item, $value) {
+
+			$table = "movies";
+
+			$answer = MoviesModel::mdlShowMovieInfo($table, $item, $value);
+
+			return $answer;
+
+		}
+
+		static public function ctrlShowMoviesCategories($item, $value) {
+
+			
+			$table = "movies";
+
+			$answer = MoviesModel::ctrlShowMoviesCategories($table, $item, $value);
+
+			return $answer;
+
+		}
+
+
 	}

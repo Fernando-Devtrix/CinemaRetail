@@ -4,9 +4,9 @@
 
 	$item = "category_route";
 
-	$value = $routes[1];
+	$value = $routes[0];
 
-	$quitDash = str_replace("-", ", ", $routes[1]);
+	$quitDash = str_replace("-", ", ", $routes[0]);
 
 	// var_dump($value);
 

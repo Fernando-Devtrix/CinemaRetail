@@ -30,12 +30,12 @@
 
 						<script>
 							swal({
-							  title: "Good job!",
+							  title: "Exito!",
 							  text: "Usuario registrado correctamente!",
 							  icon: "success"
 							});
 						</script>
-						
+
 						';
 						
 					}
@@ -50,61 +50,80 @@
 						LOGIN USER
 		=============================================*/
 
-		// public function ctrlLoginUser() {
+		public function ctrlLoginUser() {
 		
-		// 	if (isset($_POST["loginEmail"])) {
+			if(isset($_POST["loginEmail"])) {
+
+				if (preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["loginEmail"]) &&
+					preg_match('/^[a-zA-Z0-9]+$/', $_POST["loginPassword"])) {
+
+				  	$crypt = crypt($_POST["loginPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+
+					$table = "users";
+					$item = "email";
+					$value = $_POST["loginEmail"];
+
+					$answer = UsersModel::mdlShowUser($table, $item, $value);
+
+					if ($answer["email"] == $_POST["loginEmail"] && $answer["password"] == $crypt) {
+
 				
-		// 		if (preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["loginEmail"]) &&
-		// 			preg_match('/^[a-zA-Z0-9]+$/', $_POST["loginPassword"])) {
 
-		// 			$crypt = crypt($_POST["loginPassword"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
+							$_SESSION["verifySession"] = "ok";
+							$_SESSION["id"] = $answer["id"];
+							$_SESSION["name"] = $answer["name"];
+							$_SESSION["password"] = $answer["password"];
+							$_SESSION["email"] = $answer["email"];
 
-		// 			$table = "usuarios";
-		// 			$item = "email";
-		// 			$value = $_POST["loginEmail"];
+							echo '
 
-		// 			$answer = UsersModel::mdlShowUser($table, $item, $value);
+							<script>
 
-		// 			if ($answer["email"] == $_POST["loginEmail"] && $answer["password"] == $crypt) {	
+								window.location = localStorage.getItem("currentRouteCinemaR");
+
+							</script>';
+
 						
-		// 					$_SESSION["verifySession"] = "ok";
-		// 					$_SESSION["id"] = $answer["id"];
-		// 					$_SESSION["name"] = $answer["nombre"];
-		// 					$_SESSION["photo"] = $answer["foto"];
-		// 					$_SESSION["email"] = $answer["email"];
-		// 					$_SESSION["password"] = $answer["password"];
-		// 					$_SESSION["mode"] = $answer["modo"];
-
-		// 					echo '
-
-		// 					<script>
-
-		// 						console.log("loged in");
-
-		// 					</script>';
 						
-		// 			} else {
+					} else {
 
-		// 				echo '
+						echo '
 
-		// 				<script> 
+						<script> 
 
-		// 					swal({
-		// 						  title: "¡ERROR!",
-		// 						  text: "¡Por favor revise la bandeja de entrada o la carpeta de SPAM de su correo para verififcar la dirección de correo electrónico '.$answer["email"].'!",
-		// 						  icon:"error",
-		// 						  button: {
-		// 						    text: "Cerrar",
-		// 						  },
-		// 						});
+							swal({
+								  title: "¡ERROR!",
+								  text: "¡Por favor, revise que el email exista o la contraseña coincida con la registrada!",
+								  icon:"error",
+								  button: {
+								    text: "Cerrar",
+								  },
+								});
 
-		// 				</script>';
+						</script>';
 
-		// 				}
+					}
 
-		// 		}
+				} else {
 
-		// 	}
-		
-		// }
+					echo '
+
+					<script> 
+
+						swal({
+							  title: "¡ERROR!",
+							  text: "¡Error al registrar el usuario, no se permiten números o caracteres especiales!",
+							  icon:"error",
+							  button: {
+							    text: "Cerrar",
+							  },
+							});
+
+					</script>';
+
+				}
+				
+			}
+
+		}
 	}

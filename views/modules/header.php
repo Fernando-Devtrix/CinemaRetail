@@ -22,8 +22,8 @@
                                 echo '
                                     
 
-                                    <a href="'.$mainUrl.'categoria/'.$value["category_route"].'" class="dropdown-item">'.$value["genre"].'</a>
-
+                                    <a href="'.$mainUrl.''.$value["category_route"].'" class="dropdown-item">'.$value["genre"].'</a>
+                                    
                                 ';
 
                             }
@@ -54,12 +54,40 @@
                     </div>
 
                 </div>
-               
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#">Mi lista de películas</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#">Mi perfil</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#loginModal" data-toggle="modal">Iniciar sesión</a></li>
-                    <li style="margin-top: 7px;"> | </li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="#signUpModal" data-toggle="modal">Crear cuenta</a></li>
+
+                <?php 
+
+                if (isset($_SESSION["verifySession"])) {
+
+                    if ($_SESSION["verifySession"] == "ok") {
+
+                        echo '
+                           
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#">Mi lista de películas</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#">Mi perfil</a></li> 
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="'.$mainUrl.'salir">Cerrar cuenta</a></li> 
+
+                        ';
+                        
+                    } 
+                    
+                } else {
+
+                        echo '
+
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="#loginModal" data-toggle="modal">Iniciar sesión</a></li>
+                        
+                        <li style="margin-top: 7px;"> | </li>
+
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="#signUpModal" data-toggle="modal">Crear cuenta</a></li>
+                    
+                        ';
+
+
+                    }
+
+                ?>
+                
             </ul>
          </div>
     </div>
@@ -73,6 +101,7 @@
         <div class="modal-content modal-dialog">
 
             <form method="post"> 
+
                 <div class="text-center first-part">
                     <h1 class="tittle-1">¡Bienvenido de Nuevo!</h1>
                     <p class="parrafo-1">
@@ -93,7 +122,15 @@
                 </div>
 
                 <div class="text-center parte-inicio">
-                    <input class="btn btn-primary btn-iniciar-sesión" data-bs-hover-animate="pulse" type="submit" value="Iniciar Sesión"/>
+                    
+                    <?php 
+
+                        $login = new UsersController();
+                        $login -> ctrlLoginUser();
+
+                    ?>
+
+                    <input class="btn btn-primary btn-iniciar-sesión btnLogUser" type="submit" value="Iniciar Sesión"/>
                 </div>
 
             </form>

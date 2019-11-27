@@ -1,36 +1,44 @@
-<div class="container">
+
+
+<div class="container">	
 
 	<h1>Peliculas agregadas este mes</h1>
+
+	<div class="row">
+
+		<?php 
+
+			$mainUrl = Route::ctrlRoute();
+
+			$order = "date";
+			$limit = "3";
+
+			$allMovies = MoviesController::ctrlListMovies($order, $limit);			
+
+			foreach ($allMovies as $value) {
+				
+				echo '
+
+
+		
+					<div class="col-xl-4 col-lg-4 col-md-4">
+						<a href="'.$mainUrl.''.$value["name_route"].'">
+							<img src="'.$mainUrl.''.$value["image_route"].'" class="rounded fourImagesCollection movies" width="350" height="450" alt="...">
+							<figcaption class="figure-caption">'.$value["title"].'</figcaption>
+						</a>
+					</div>
+
+				';
+
+			}
+
+		?>
+
+	</div>		
 	
-	<?php
-
-		$order = "date";
-		$limit = "3";
-
-		$allMovies = MoviesController::ctrlListMovies($order, $limit);
-
-		foreach ($allMovies as $key => $value) {
-
-			$movie_style = json_decode($value["movie_img_style"], true);
-
-			echo
-				'<div class="row">
-					<div class="'.$movie_style["Col"].'">
-					    <figure class="figure">
-					    	<a href="#">
-								<figcaption class="figure-caption">'.$value["title"].'</figcaption>
-						    	<img src="'.$mainUrl.''.$value["image_route"].'" alt="img" class="'.$movie_style["BootstrapClass"].' image'.$movie_style["Num"].' movies">
-					    	</a>
-						</figure>		
-					</div>	
-				</div>';		
-			
-		}
-
-	?>
-
-
 </div>
+
+
 
 <div class="container">
 	<h2 class="">Película Recomendada</h2>
@@ -44,7 +52,7 @@
 
 	<h2>Películas de acción</h2>
 
-	<div class="row 4ImagesCollection">
+	<div class="row">
 
 		<?php 
 
@@ -58,9 +66,9 @@
 				
 				echo '
 		
-					<div class="col-xl-3 col-lg-3 col-md-3 col-6">
-						<a href="#">
-							<img src="'.$mainUrl.''.$value["image_route"].'" class="rounded fourImagesCollection movies" width="250" height="350" alt="...">
+					<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+						<a href="'.$mainUrl.''.$value["name_route"].'">
+							<img src="'.$mainUrl.''.$value["image_route"].'" class="rounded fourImagesCollection movies" width="350" height="450" alt="...">
 							<figcaption class="figure-caption">'.$value["title"].'</figcaption>
 						</a>
 					</div>
@@ -81,7 +89,7 @@
 
 	<h2>Películas de terror</h2>
 
-	<div class="row 4ImagesCollection">
+	<div class="row">
 
 		<?php 
 
@@ -95,9 +103,9 @@
 				
 				echo '
 		
-					<div class="col-xl-3 col-lg-3 col-md-3 col-6">
-						<a href="#">
-							<img src="'.$mainUrl.''.$value["image_route"].'" class="rounded fourImagesCollection movies" width="250" height="350" alt="...">
+					<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+						<a href="'.$mainUrl.''.$value["name_route"].'">
+							<img src="'.$mainUrl.''.$value["image_route"].'" class="rounded fourImagesCollection movies" width="350" height="450" alt="...">
 							<figcaption class="figure-caption">'.$value["title"].'</figcaption>
 						</a>
 					</div>
@@ -118,7 +126,7 @@
 
 	<h2>Películas de comedia</h2>
 
-	<div class="row 4ImagesCollection">
+	<div class="row">
 
 		<?php 
 
@@ -132,9 +140,9 @@
 				
 				echo '
 		
-					<div class="col-xl-3 col-lg-3 col-md-3 col-6">
-						<a href="#">
-							<img src="'.$mainUrl.''.$value["image_route"].'" class="rounded fourImagesCollection movies" width="250" height="350" alt="...">
+					<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+						<a href="'.$mainUrl.''.$value["name_route"].'">
+							<img src="'.$mainUrl.''.$value["image_route"].'" class="rounded fourImagesCollection movies" width="350" height="450" alt="...">
 							<figcaption class="figure-caption">'.$value["title"].'</figcaption>
 						</a>
 					</div>
@@ -155,7 +163,7 @@
 
 	<h2>Ver las películas y novedades</h2>
 	
-	<div class="row 4ImagesCollection">
+	<div class="row">
 
 		<?php  
 
@@ -167,9 +175,9 @@
 			foreach ($allMovies as $value) {
 
 				echo '
-					<div class="col-xl-3 col-lg-3 col-md-3 col-6">
-						<a href="#">
-							<img src="'.$mainUrl.''.$value["image_route"].'" class="rounded fourImagesCollection movies" width="250" height="350" alt="...">
+					<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+						<a href="'.$mainUrl.''.$value["name_route"].'">
+							<img src="'.$mainUrl.''.$value["image_route"].'" class="rounded fourImagesCollection movies" width="350" height="450" alt="...">
 							<figcaption class="figure-caption">'.$value["title"].'</figcaption>
 						</a>
 					</div>
@@ -183,7 +191,7 @@
 		
 		<br />
 		
-		<div class="row 4ImagesCollection">
+		<div class="row">
 
 		';
 

@@ -32,5 +32,24 @@
 
 		}
 
+		/*=============================================
+						SHOW USER
+		=============================================*/
+
+		static public function mdlShowUser($table, $item, $value) {
+
+			$stmt = Conection::conect()->prepare("SELECT * FROM $table WHERE $item = :$item");
+
+			$stmt->bindParam(":".$item, $value, PDO::PARAM_STR);
+
+			$stmt->execute();
+
+			return $stmt -> fetch();
+
+			$stmt->close();
+
+			$stmt = null;
+
+		}
  		
  	}

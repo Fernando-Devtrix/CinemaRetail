@@ -57,4 +57,54 @@
 
 		}
 
+		/*=============================================
+					INFO MOVIES
+		=============================================*/
+
+		static public function mdlShowMovieInfo($table, $item, $value) {
+
+			$stmt = Conection::conect()->prepare("SELECT * FROM $table WHERE $item = :$item");
+
+			$stmt -> bindParam(":".$item, $value, PDO::PARAM_STR);
+
+			$stmt -> execute();
+
+			return $stmt -> fetch();
+			
+			$stmt -> close();
+
+			$stmt = null;
+		}
+
+		/*=============================================
+					SHOW CATEGORIES
+		=============================================*/
+
+		static public function ctrlShowMoviesCategories($table, $item, $value) {
+
+			if ($item != null) {
+				
+				$stmt = Conection::conect()->prepare("SELECT * FROM $table WHERE $item = :$item");
+
+				$stmt -> bindParam(":".$item, $value, PDO::PARAM_STR);
+
+				$stmt -> execute();
+
+				return $stmt -> fetch();
+
+			} else {
+
+				$stmt = Conection::conect()->prepare("SELECT * FROM $table");
+
+				$stmt -> execute();
+
+				return $stmt -> fetchAll();
+
+			}
+			
+			$stmt -> close();
+
+			$stmt = null;
+		}
+
 	}

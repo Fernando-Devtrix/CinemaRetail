@@ -13,6 +13,8 @@
 
 	<?php 
 
+		session_start();
+
 		$mainUrl = Route::ctrlRoute();
 
 		$icon = TemplateController::ctrlTemplateIcon();
@@ -46,6 +48,8 @@
 
     <script src="<?php echo $mainUrl; ?>src/plugins/assets/js/script.min.js"></script>
 
+    <script src="<?php echo $mainUrl; ?>views/js/users.js"></script>
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 	<!-- <script rel="stylesheet" href="views/js/plugins/bootstrap.min.js"></script> -->
@@ -67,21 +71,67 @@
 
 	// $routes = array();
 
-	$route = null;
+	$infoMovie = null;
+
+	$route = null;	
 
 	if (isset($_GET["route"])) {
 
 		$routes =  explode("/", $_GET["route"]);
+		// var_dump($routes[0]);
+
+		// $route = $_GET["route"];
+		// var_dump($routes);
+
+
+		$item = "name_route";
+		$value = $routes[0]; 
+
+
+		// FRIENDLY URL'S INFO MOVIES
+
+		$infoMovieRoute = MoviesController::ctrlShowMovieInfo($item, $value);
+
+		if($value == $infoMovieRoute["name_route"]) {
+
+			$infoMovie = $value; 
+
+		};
+
+		var_dump($infoMovieRoute); 
 
 		if ($routes[0] == "pagina-principal") {
 			
 			include "modules/main-page.php";
 
-		} else if ($routes[1] == "accion" || $routes[1] == "accion-aventura" ) {
-
-			include "modules/categories.php";
+		} else if ($routes[0] == null ||
+					$routes[0] == "accion" || 
+					$routes[0] == "accion-aventura" ||
+					$routes[0] == "accion-misterio" ||
+					$routes[0] == "terror-ciencia-ficcion-accion" ||
+					$routes[0] == "terror" ||
+					$routes[0] == "terror-drama" ||
+					$routes[0] == "ciencia-ficcion" ||
+					$routes[0] == "romance-comedia" ||
+					$routes[0] == "comedia" ||
+					$routes[0] == "drama" ||
+					$routes[0] == "infantil" ||
+					$routes[0] == "cienciaficcion" ||
+					$routes[0] == "ciencia-ficcion" ||
+					$routes[0] == "aterror-ciencia-ficcion"
+		) {
 			
-		} 
+			include "modules/categories.php";
+
+		} else if ($infoMovie != null) {
+			
+			include "modules/infomovie.php";
+
+		} else if ($routes[0] == "salir") {
+			
+			include "modules/logout.php";
+
+		}
 
 	} else {
 
